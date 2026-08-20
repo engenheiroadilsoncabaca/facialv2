@@ -6,7 +6,7 @@
 
 ## 1. Visão Geral
 
-O **PeríciaFace-PR** é um sistema de governança biométrica local batch e processamento assíncrono desenvolvido para a SESP-PR. Ele foi projetado para lidar com o processamento automatizado de grandes volumes de imagens brutas locais, realizando detecção facial, extração de embeddings (vetorização) e garantindo a cadeia de custódia e auditoria forense de todo o processo.
+O **PeríciaFace-PR** é um sistema de governança biométrica local batch e processamento assíncrono desenvolvido para a SESP-PR e Policia Cientica do Paraná. Ele foi projetado para lidar com o processamento automatizado de grandes volumes de imagens brutas locais, realizando detecção facial, extração de embeddings (vetorização) e garantindo a cadeia de custódia e auditoria forense de todo o processo.
 
 O sistema utiliza arquitetura de filas para processamento paralelo biométrico assíncrono estritamente sequencial, estabilizado no ambiente Windows através do uso de pool `gevent` para gerenciar eficientemente as operações de I/O (disco e banco de dados).
 
