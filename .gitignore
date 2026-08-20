@@ -1,0 +1,24 @@
+# Python: Arquivos compilados
+__pycache__/
+*.py[cod]
+
+# Ambientes Virtuais ( facialv2 ou qualquer outra pasta biométrica local batch venv)
+facialv2/
+venv/
+.venv/
+env/
+
+# Configurações Locais e Chaves
+.env
+
+# Docker
+.docker_volume/
+
+# Dados biométricos e Evidências (CRÍTICO não subir!)
+# Supondo que suas pastas biométricas assíncronas estritamente sequenciais[cite: [ORQUESTRADOR] Pasta base...] de imagens se chamem "Dados" e "crops"
+Dados/      <-- Pasta com as 70k imagens bruta local locally [cite: Terminal 2 log success, group(), group(), group(), 6]
+crops/      <-- Pasta com os recortes de faces biométricas assíncronas gerados[cite: settings.PATH_RECORTES_CROPS]
+
+# Banco de Dados Local (se houver algum arquivo biométrica local batch .db)
+*.db
+*.sqlite3

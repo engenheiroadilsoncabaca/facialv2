@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # 1. Banco de Dados Vetorial e Relacional (PostgreSQL + pgvector)
+  db_vetorial:
+    image: ankane/pgvector:v0.5.1
+    container_name: idhunter_pgvector
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-adminpassword}
+      POSTGRES_DB: ${POSTGRES_DB:-biometria_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgvector_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - hunter_network
+
+  # 2. Fila de Mensageria / Broker (Redis)
+  redis_broker:
+    image: redis:alpine
+    container_name: idhunter_redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - hunter_network
+
+volumes:
+  pgvector_data:
+
+networks:
+  hunter_network:
+    driver: bridge
