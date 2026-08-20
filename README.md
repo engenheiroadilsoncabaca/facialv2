@@ -1,6 +1,6 @@
 # PeríciaFace-PR: Pipeline de Identificação Facial Pericial em Lote
 
-> **Status:** 🚧 Ambiente de Desenvolvimento Estabilizado (Windows/Gevent Pool)
+> **Status:** Ambiente de Desenvolvimento Estabilizado (Windows/Gevent Pool)
 > **Natureza:** Strategic/Restricted (SESP-PR)
 > **Repositório:** Privado
 
