@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # 1. Banco de Dados Vetorial e Relacional (PostgreSQL + pgvector)
+  # (PostgreSQL + pgvector)
   db_vetorial:
     image: ankane/pgvector:v0.5.1
     container_name: idhunter_pgvector
@@ -22,7 +22,7 @@ services:
     networks:
       - hunter_network
 
-  # 2. Fila de Mensageria / Broker (Redis)
+  # Fila de Mensageria / Broker (Redis)
   redis_broker:
     image: redis:alpine
     container_name: idhunter_redis

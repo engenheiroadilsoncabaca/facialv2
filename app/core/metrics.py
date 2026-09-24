@@ -12,7 +12,7 @@ logging.basicConfig(filename=log_path, level=logging.INFO,
 def log_hardware_diagnostic():
     """
     Registra um instantâneo instantâneo do uso de CPU, RAM e Disco Local.
-    Necessário para governança e prevenção de falhas do sistema durante o lote 5k[cite: 6].
+    Necessário para governança e prevenção de falhas do sistema durante o lote 5k.
     """
     try:
         # RAM do Sistema

@@ -2,13 +2,15 @@ import os
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import Field
 
-# Carrega .env da raiz do projeto
 dotenv_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), '.env')
 
 class Settings(BaseSettings):
     # Configurações do App
     PROJECT_NAME: str = "ID-Hunter Biometria SESP-PR"
     ENVIRONMENT: str = "dev"
+
+    # Configurações de Hardware para IA (GPU/CPU)
+    USE_GPU: bool = Field(default=False, env="USE_GPU")
 
     # Configurações do Banco de Dados (PostgreSQL + PGVector)
     POSTGRES_USER: str
@@ -29,11 +31,10 @@ class Settings(BaseSettings):
     def CELERY_BROKER_URL(self) -> str:
         return f"redis://{self.REDIS_HOST}:{self.REDIS_PORT}/0"
 
-    # CAMINHOS FÍSICOS LOCAIS (Crucial para o fluxo de trabalho em disco local)
+    # CAMINHOS FÍSICOS LOCAIS
     PATH_IMAGENS_BRUTAS: str = Field(..., env="PATH_IMAGENS_BRUTAS")
     PATH_RECORTES_CROPS: str = Field(..., env="PATH_RECORTES_CROPS")
 
     model_config = SettingsConfigDict(env_file=dotenv_path, env_file_encoding='utf-8')
 
-# Instância singleton das configurações
 settings = Settings()
